@@ -1,18 +1,25 @@
+import logging
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import UserSerializer, TeamSerializer, ActivitySerializer, LeaderboardSerializer, WorkoutSerializer
 from .models import User, Team, Activity, Leaderboard, Workout
 
+logger = logging.getLogger(__name__)
+
 @api_view(['GET'])
 def api_root(request, format=None):
+    base_url = 'https://glowing-space-trout-jj7q94p64gjc5x5r-8000.app.github.dev/'
+    print(f"Base URL being used: {base_url}")
+    logger.info(f"Base URL being used: {base_url}")
     return Response({
-        'users': request.build_absolute_uri('api/users/'),
-        'teams': request.build_absolute_uri('api/teams/'),
-        'activities': request.build_absolute_uri('api/activities/'),
-        'leaderboard': request.build_absolute_uri('api/leaderboard/'),
-        'workouts': request.build_absolute_uri('api/workouts/'),
+        'users': base_url + 'api/users/',
+        'teams': base_url + 'api/teams/',
+        'activities': base_url + 'api/activities/',
+        'leaderboard': base_url + 'api/leaderboard/',
+        'workouts': base_url + 'api/workouts/',
     })
+    syntax_error_here
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
