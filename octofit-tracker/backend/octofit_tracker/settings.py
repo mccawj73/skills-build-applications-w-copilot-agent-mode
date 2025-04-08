@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +27,11 @@ SECRET_KEY = "django-insecure-2ek37@=c%kn8mnu87ul5oai@&999ze-l#$b@s*#omw=7p84s@2
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+
+# Add the codespace Django REST API endpoint suffix
+CODESPACE_NAME = os.getenv("CODESPACE_NAME", "")
+if CODESPACE_NAME:
+    ALLOWED_HOSTS.append(f"{CODESPACE_NAME}-8000.preview.app.github.dev")
 
 
 # Application definition
