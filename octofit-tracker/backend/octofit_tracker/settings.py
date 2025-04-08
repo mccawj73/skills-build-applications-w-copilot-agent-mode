@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # Add the codespace Django REST API endpoint suffix
-ALLOWED_HOSTS.append(f"glowing-space-trout-jj7q94p64gjc5x5r-8000.preview.app.github.dev")
+ALLOWED_HOSTS.append(f"glowing-space-trout-jj7q94p64gjc5x5r-8000.app.github.dev")
 
 
 # Application definition
